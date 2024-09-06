@@ -20,7 +20,7 @@ const ModalInfoCajeros = ({
 
     try {
       const response = await fetch(
-        `http://localhost:3000/update_user/${id_empleado}`,
+        `https://plataforma-bancaria.onrender.com/update_user/${id_empleado}`,
         {
           method: "PUT",
           headers: {

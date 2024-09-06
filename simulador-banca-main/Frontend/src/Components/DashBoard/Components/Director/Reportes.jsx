@@ -6,7 +6,9 @@ export const Reportes = () => {
   useEffect(() => {
     const fecthInfo = async () => {
       try {
-        const response = await fetch("http://localhost:3000/details");
+        const response = await fetch(
+          "https://plataforma-bancaria.onrender.com/details"
+        );
         if (!response.ok) {
           throw new Error("Network response was not ok");
         }

@@ -13,7 +13,9 @@ export const Historial = () => {
   useEffect(() => {
     const fecthData = async () => {
       try {
-        const response = await fetch("http://localhost:3000/authorized");
+        const response = await fetch(
+          "https://plataforma-bancaria.onrender.com/authorized"
+        );
         if (!response.ok) {
           throw new Error("Network response was not ok");
         }

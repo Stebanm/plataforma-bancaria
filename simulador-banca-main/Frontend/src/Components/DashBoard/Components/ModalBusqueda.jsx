@@ -58,7 +58,7 @@ export const ModalBusqueda = ({ showModal, setShowModal, data }) => {
   const onSubmit = async (formData) => {
     try {
       const response = await fetch(
-        `http://localhost:3000/update_client/${data.id_cliente}`,
+        `https://plataforma-bancaria.onrender.com/update_client/${data.id_cliente}`,
         {
           method: "PUT",
           headers: {

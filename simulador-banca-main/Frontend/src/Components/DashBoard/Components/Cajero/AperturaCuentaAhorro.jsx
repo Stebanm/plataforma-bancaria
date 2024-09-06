@@ -8,7 +8,9 @@ const AperturaCuentaAhorro = () => {
 
   const firstCosing = async () => {
     try {
-      const response = await fetch("http://localhost:3000/firstConsing");
+      const response = await fetch(
+        "https://plataforma-bancaria.onrender.com/firstConsing"
+      );
       if (!response.ok) {
         if (response.status === 404) {
           console.error("Información no encontrada");

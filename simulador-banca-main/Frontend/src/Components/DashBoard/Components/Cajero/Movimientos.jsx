@@ -34,12 +34,11 @@ export const Movimientos = () => {
   //Login, user context
   const { user } = useAuth();
 
-
   // Funcion para traer un empleado por id.
   const fetchEmpleadoId = async () => {
     try {
       const response = await fetch(
-        `http://localhost:3000/get_users/${user.id_empleado}`
+        `https://plataforma-bancaria.onrender.com/get_users/${user.id_empleado}`
       );
       if (response.ok) {
         const userData = await response.json();
@@ -55,7 +54,9 @@ export const Movimientos = () => {
   // funcion para traer todos los empleados.
   const fetchEmpleados = async () => {
     try {
-      const response = await fetch("http://localhost:3000/get_users");
+      const response = await fetch(
+        "https://plataforma-bancaria.onrender.com/get_users"
+      );
       if (response.ok) {
         const data = await response.json();
         setEmpleadoDetails(data);
@@ -90,7 +91,7 @@ export const Movimientos = () => {
 
       // Realizar la consulta a la base de datos utilizando el número de cuenta convertido
       const response = await fetch(
-        `http://localhost:3000/get_account/${accountNumberInt}`
+        `https://plataforma-bancaria.onrender.com/get_account/${accountNumberInt}`
       );
       if (!response.ok) {
         throw new Error("Network response was not ok");
@@ -143,7 +144,7 @@ export const Movimientos = () => {
       try {
         // Realiza una solicitud al servidor para cambiar el estado del cliente con el ID proporcionado
         const responseClient = await fetch(
-          `http://localhost:3000/update_balance/${id}`,
+          `https://plataforma-bancaria.onrender.com/update_balance/${id}`,
           {
             method: "PUT",
             headers: {
@@ -159,7 +160,7 @@ export const Movimientos = () => {
         }
 
         const responseEmploye = await fetch(
-          `http://localhost:3000/balance_request/${idEmpleado}`,
+          `https://plataforma-bancaria.onrender.com/balance_request/${idEmpleado}`,
           {
             method: "PUT",
             headers: {
@@ -178,7 +179,7 @@ export const Movimientos = () => {
         }
 
         const responseMovimiento = await fetch(
-          `http://localhost:3000/post_movimiento`,
+          `https://plataforma-bancaria.onrender.com/post_movimiento`,
           {
             method: "POST",
             headers: {
@@ -240,7 +241,7 @@ export const Movimientos = () => {
 
       // Realizar la consulta a la base de datos utilizando el número de cuenta convertido
       const response = await fetch(
-        `http://localhost:3000/get_account/${accountNumberInt}`
+        `https://plataforma-bancaria.onrender.com/get_account/${accountNumberInt}`
       );
       if (!response.ok) {
         throw new Error("Network response was not ok");
@@ -291,7 +292,7 @@ export const Movimientos = () => {
       try {
         // Realiza una solicitud al servidor para actualizar el saldo del cliente
         const responseClient = await fetch(
-          `http://localhost:3000/update_balance/${id}`,
+          `https://plataforma-bancaria.onrender.com/update_balance/${id}`,
           {
             method: "PUT",
             headers: {
@@ -311,7 +312,7 @@ export const Movimientos = () => {
 
         // Realiza una solicitud al servidor para actualizar el saldo del empleado
         const responseEmploye = await fetch(
-          `http://localhost:3000/balance_request/${idEmpleado}`,
+          `https://plataforma-bancaria.onrender.com/balance_request/${idEmpleado}`,
           {
             method: "PUT",
             headers: {
@@ -332,7 +333,7 @@ export const Movimientos = () => {
         }
 
         const responseMovimiento = await fetch(
-          `http://localhost:3000/post_movimiento`,
+          `https://plataforma-bancaria.onrender.com/post_movimiento`,
           {
             method: "POST",
             headers: {
@@ -374,7 +375,7 @@ export const Movimientos = () => {
 
     try {
       const response = await fetch(
-        `http://localhost:3000/balance_request/${idEmpleado}`,
+        `https://plataforma-bancaria.onrender.com/balance_request/${idEmpleado}`,
         {
           method: "PUT",
           headers: {
@@ -409,7 +410,7 @@ export const Movimientos = () => {
 
     try {
       const response = await fetch(
-        `http://localhost:3000/balance_request/${idEmpleado}`,
+        `https://plataforma-bancaria.onrender.com/balance_request/${idEmpleado}`,
         {
           method: "PUT",
           headers: {
@@ -469,7 +470,7 @@ export const Movimientos = () => {
     try {
       // Actualiza el saldo del cajero
       const responseCajero = await fetch(
-        `http://localhost:3000/balance_request/${idEmpleado}`,
+        `https://plataforma-bancaria.onrender.com/balance_request/${idEmpleado}`,
         {
           method: "PUT",
           headers: {
@@ -491,7 +492,7 @@ export const Movimientos = () => {
 
       // Actualiza el saldo del cajero principal (bóveda)
       const responsePrincipal = await fetch(
-        `http://localhost:3000/balance_request/${idPrincipal}`,
+        `https://plataforma-bancaria.onrender.com/balance_request/${idPrincipal}`,
         {
           method: "PUT",
           headers: {
@@ -513,7 +514,7 @@ export const Movimientos = () => {
 
       // Registrar el movimiento en el historial
       const responseMovimiento = await fetch(
-        `http://localhost:3000/post_devolver/`,
+        `https://plataforma-bancaria.onrender.com/post_devolver/`,
         {
           method: "POST",
           headers: {

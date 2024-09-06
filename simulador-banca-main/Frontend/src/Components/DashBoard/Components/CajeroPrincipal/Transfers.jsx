@@ -19,7 +19,9 @@ const Transfers = () => {
 
   const fetchEmpleados = async () => {
     try {
-      const response = await fetch("http://localhost:3000/get_users");
+      const response = await fetch(
+        "https://plataforma-bancaria.onrender.com/get_users"
+      );
       if (response.ok) {
         const data = await response.json();
         setEmpleadoDetails(data);
@@ -40,7 +42,7 @@ const Transfers = () => {
   const fetchEmpleadoId = async (idEmpleado) => {
     try {
       const response = await fetch(
-        `http://localhost:3000/get_users/${idEmpleado}`
+        `https://plataforma-bancaria.onrender.com/get_users/${idEmpleado}`
       );
       if (response.ok) {
         const data = await response.json();
@@ -64,7 +66,7 @@ const Transfers = () => {
     if (estado === "Solicitud") {
       try {
         const responseEmpleado = await fetch(
-          `http://localhost:3000/balance_request/${id_empleado}`,
+          `https://plataforma-bancaria.onrender.com/balance_request/${id_empleado}`,
           {
             method: "PUT",
             headers: {

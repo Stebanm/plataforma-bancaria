@@ -7,17 +7,20 @@ export const ModalCreacionU = ({ data, showModal, closeModal }) => {
 
   const AddUser = async (data) => {
     try {
-      const response = await fetch("http://localhost:3000/add_user", {
-        method: "POST",
-        headers: {
-          "Content-type": "application/json",
-        },
-        body: JSON.stringify({
-          username: data.username,
-          password: data.password,
-          id_rol: data.id_rol,
-        }),
-      });
+      const response = await fetch(
+        "https://plataforma-bancaria.onrender.com/add_user",
+        {
+          method: "POST",
+          headers: {
+            "Content-type": "application/json",
+          },
+          body: JSON.stringify({
+            username: data.username,
+            password: data.password,
+            id_rol: data.id_rol,
+          }),
+        }
+      );
 
       if (response.ok) {
         toast.success("Creación exitosa");

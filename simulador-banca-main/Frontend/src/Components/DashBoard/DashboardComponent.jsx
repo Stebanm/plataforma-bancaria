@@ -24,9 +24,8 @@ import AperturaCuentaAhorro from "./Components/Cajero/AperturaCuentaAhorro";
 import { ClientView } from "./Components/Cliente/ClientView";
 import { AllTarjets } from "./Components/Cliente/AllTarjets";
 import { ClientMovimientos } from "./Components/Cliente/ClientMovimientos";
-import  { Cancelación } from "./Components/Cajero/Cancelación";
-import   Consignar  from "./Components/Cajero/Consignar";
-
+import { Cancelación } from "./Components/Cajero/Cancelación";
+import Consignar from "./Components/Cajero/Consignar";
 
 export const DashboardComponent = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -56,7 +55,7 @@ export const DashboardComponent = () => {
         // Verificar que se haya almacenado el nombre de usuario en el estado
         if (userName) {
           const response = await fetch(
-            `http://localhost:3000/get_client/${userName}`
+            `https://plataforma-bancaria.onrender.com/get_client/${userName}`
           );
           if (!response.ok) {
             throw new Error("Network response was not ok");
@@ -549,12 +548,10 @@ export const DashboardComponent = () => {
                                     Cancelación C. Ahorros
                                   </span>
                                 </button>
-
                               </div>
-                              
                             )}
 
-<button
+                            <button
                               className="flex items-center px-4 py-2 font-medium tracking-wide text-darkGray capitalize transition-colors duration-300 transform bg-transparent rounded-md hover:bg-darkGray hover:text-white focus:outline-none space-x-2 w-full xl:text-sm 2xl:text-base"
                               onClick={() => {
                                 closeSidebar();
@@ -817,8 +814,8 @@ export const DashboardComponent = () => {
                   )}
                   {contenidoSeleccionado === "Boveda" && <Boveda />}
                   {contenidoSeleccionado === "Transfers" && <Transfers />}
-                  {contenidoSeleccionado === "Cancelación" && <Cancelación/>}
-                  {contenidoSeleccionado === "Consignar" && <Consignar/>}
+                  {contenidoSeleccionado === "Cancelación" && <Cancelación />}
+                  {contenidoSeleccionado === "Consignar" && <Consignar />}
 
                   {contenidoSeleccionado === "AperturaCuentaAhorro" && (
                     <AperturaCuentaAhorro />

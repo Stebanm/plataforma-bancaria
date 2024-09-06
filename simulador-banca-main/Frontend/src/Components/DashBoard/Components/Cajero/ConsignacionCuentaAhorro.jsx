@@ -17,7 +17,7 @@ const ConsgnacionCuentaAhorro = ({
   const fetchEmpleadoId = async () => {
     try {
       const response = await fetch(
-        `http://localhost:3000/get_users/${user.id_empleado}`
+        `https://plataforma-bancaria.onrender.com/get_users/${user.id_empleado}`
       );
       if (response.ok) {
         const userData = await response.json();
@@ -45,7 +45,7 @@ const ConsgnacionCuentaAhorro = ({
       try {
         // Actualizar el saldo en la base de datos del cliente
         const responseClient = await fetch(
-          `http://localhost:3000/update_balance/${id_detalle}`,
+          `https://plataforma-bancaria.onrender.com/update_balance/${id_detalle}`,
           {
             method: "PUT",
             headers: {
@@ -63,7 +63,7 @@ const ConsgnacionCuentaAhorro = ({
 
         // Cambiar el estado del cliente a "Autorizado"
         const responseStatus = await fetch(
-          `http://localhost:3000/client_status/${id_detalle}`,
+          `https://plataforma-bancaria.onrender.com/client_status/${id_detalle}`,
           {
             method: "PUT",
             headers: {
@@ -80,7 +80,7 @@ const ConsgnacionCuentaAhorro = ({
         }
 
         const responseEmploye = await fetch(
-          `http://localhost:3000/balance_request/${id_empleado}`,
+          `https://plataforma-bancaria.onrender.com/balance_request/${id_empleado}`,
           {
             method: "PUT",
             headers: {
@@ -100,7 +100,7 @@ const ConsgnacionCuentaAhorro = ({
 
         // Registrar movimiento
         const responseMovimiento = await fetch(
-          `http://localhost:3000/post_movimiento`,
+          `https://plataforma-bancaria.onrender.com/post_movimiento`,
           {
             method: "POST",
             headers: {

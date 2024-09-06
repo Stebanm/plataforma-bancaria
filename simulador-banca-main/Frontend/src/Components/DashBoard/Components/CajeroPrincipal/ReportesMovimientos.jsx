@@ -10,7 +10,9 @@ export const ReportesMovimientos = () => {
   // Funcion para traer todos los movimientos.
   const fetchMovimientos = async () => {
     try {
-      const response = await fetch(`http://localhost:3000/get_movimientos`);
+      const response = await fetch(
+        `https://plataforma-bancaria.onrender.com/get_movimientos`
+      );
       if (response.ok) {
         const data = await response.json();
         setAllMovimientos(data);

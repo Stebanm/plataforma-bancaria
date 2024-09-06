@@ -22,7 +22,7 @@ export const ClientMovimientos = ({
 
     try {
       const response = await fetch(
-        `http://localhost:3000/user_movimientos/${accountMovimientos}`
+        `https://plataforma-bancaria.onrender.com/user_movimientos/${accountMovimientos}`
       );
       if (response.ok) {
         const data = await response.json();

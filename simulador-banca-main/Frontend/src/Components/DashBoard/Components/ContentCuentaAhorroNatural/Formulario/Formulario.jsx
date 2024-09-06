@@ -142,7 +142,7 @@ export const Formulario = ({
   const CrearCliente = async () => {
     const getClient = async (NDocumento) => {
       const response = await fetch(
-        `http://localhost:3000/get_client/${NDocumento}`
+        `https://plataforma-bancaria.onrender.com/get_client/${NDocumento}`
       );
       if (response.status === 404) {
         // Cliente no encontrado, retornamos un valor que indica que no existe
@@ -153,13 +153,16 @@ export const Formulario = ({
     };
 
     const registerClient = async (id, data) => {
-      const response = await fetch(`http://localhost:3000/add_natural/${id}`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(data),
-      });
+      const response = await fetch(
+        `https://plataforma-bancaria.onrender.com/add_natural/${id}`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(data),
+        }
+      );
       if (!response.ok) throw new Error("Error al registrar el cliente.");
       return response.json();
     };

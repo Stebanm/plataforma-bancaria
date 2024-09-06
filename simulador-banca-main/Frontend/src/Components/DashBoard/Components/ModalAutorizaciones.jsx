@@ -8,7 +8,7 @@ export const ModalAutorizaciones = ({ data, showModal, closeModal }) => {
   const handleDenegar = (id) => {
     try {
       // Realiza una solicitud al servidor para cambiar el estado del cliente con el ID proporcionado
-      fetch(`http://localhost:3000/EstadoD/${id}`, {
+      fetch(`https://plataforma-bancaria.onrender.com/EstadoD/${id}`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",

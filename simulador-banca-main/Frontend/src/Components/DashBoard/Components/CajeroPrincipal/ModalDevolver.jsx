@@ -13,12 +13,12 @@ export const ModalDevolver = ({ openModal1, setOpenModal1 }) => {
   // Función para traer todos los empleados.
   const fetchEmpleados = async () => {
     try {
-      const response = await fetch("http://localhost:3000/get_users");
+      const response = await fetch(
+        "https://plataforma-bancaria.onrender.com/get_users"
+      );
       if (response.ok) {
         const userData = await response.json();
-        const empleadoPrincipal = userData.find(
-          (users) => users.id_rol === 4
-        );
+        const empleadoPrincipal = userData.find((users) => users.id_rol === 4);
         setIdEmpleadoDetails(empleadoPrincipal || {});
       } else {
         console.error("Error fetching user info:", response.status);
@@ -31,7 +31,9 @@ export const ModalDevolver = ({ openModal1, setOpenModal1 }) => {
   // Función para traer información de la bóveda.
   const fetchBoveda = async () => {
     try {
-      const response = await fetch("http://localhost:3000/get_boveda");
+      const response = await fetch(
+        "https://plataforma-bancaria.onrender.com/get_boveda"
+      );
       if (response.ok) {
         const data = await response.json();
         setBovedaDetails(data);
@@ -52,7 +54,9 @@ export const ModalDevolver = ({ openModal1, setOpenModal1 }) => {
 
     // Validar monto ingresado
     if (isNaN(amountToReturn) || amountToReturn <= 0) {
-      return toast.error("Error: El monto debe ser un número positivo mayor que cero.");
+      return toast.error(
+        "Error: El monto debe ser un número positivo mayor que cero."
+      );
     }
     if (amountToReturn > saldoEmpleado) {
       return toast.error(
@@ -65,7 +69,7 @@ export const ModalDevolver = ({ openModal1, setOpenModal1 }) => {
     try {
       // Actualizar el saldo del cajero principal
       const responseCajero = await fetch(
-        `http://localhost:3000/balance_request/${idEmpleado}`,
+        `https://plataforma-bancaria.onrender.com/balance_request/${idEmpleado}`,
         {
           method: "PUT",
           headers: { "Content-Type": "application/json" },
@@ -83,7 +87,7 @@ export const ModalDevolver = ({ openModal1, setOpenModal1 }) => {
 
       // Actualizar el saldo de la bóveda y registrar el movimiento
       const entradaBoveda = await fetch(
-        `http://localhost:3000/entrada_boveda/${idEmpleado}`,
+        `https://plataforma-bancaria.onrender.com/entrada_boveda/${idEmpleado}`,
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },

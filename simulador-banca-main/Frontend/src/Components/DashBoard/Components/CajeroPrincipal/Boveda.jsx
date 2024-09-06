@@ -7,7 +7,9 @@ const Boveda = () => {
   // Función para traer información de la bóveda.
   const fetchBoveda = async () => {
     try {
-      const response = await fetch("http://localhost:3000/get_boveda");
+      const response = await fetch(
+        "https://plataforma-bancaria.onrender.com/get_boveda"
+      );
       if (response.ok) {
         const data = await response.json();
         setBovedaDetails(data);

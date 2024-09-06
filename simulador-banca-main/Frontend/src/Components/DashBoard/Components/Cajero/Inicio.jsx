@@ -28,7 +28,7 @@ export const Inicio = () => {
   const fetchEmpleadoId = async () => {
     try {
       const response = await fetch(
-        `http://localhost:3000/get_users/${user.id_empleado}`
+        `https://plataforma-bancaria.onrender.com/get_users/${user.id_empleado}`
       );
       if (response.ok) {
         const userData = await response.json();
@@ -44,7 +44,9 @@ export const Inicio = () => {
   // funcion para traer todos los empleados.
   const fetchEmpleados = async () => {
     try {
-      const response = await fetch("http://localhost:3000/get_users");
+      const response = await fetch(
+        "https://plataforma-bancaria.onrender.com/get_users"
+      );
       if (response.ok) {
         const data = await response.json();
         setEmpleadoDetails(data);
@@ -71,7 +73,7 @@ export const Inicio = () => {
 
     try {
       const response = await fetch(
-        `http://localhost:3000/balance_request/${idEmpleado}`,
+        `https://plataforma-bancaria.onrender.com/balance_request/${idEmpleado}`,
         {
           method: "PUT",
           headers: {
@@ -106,7 +108,7 @@ export const Inicio = () => {
 
     try {
       const response = await fetch(
-        `http://localhost:3000/balance_request/${idEmpleado}`,
+        `https://plataforma-bancaria.onrender.com/balance_request/${idEmpleado}`,
         {
           method: "PUT",
           headers: {
@@ -166,7 +168,7 @@ export const Inicio = () => {
     try {
       // Actualiza el saldo del cajero
       const responseCajero = await fetch(
-        `http://localhost:3000/balance_request/${idEmpleado}`,
+        `https://plataforma-bancaria.onrender.com/balance_request/${idEmpleado}`,
         {
           method: "PUT",
           headers: {
@@ -188,7 +190,7 @@ export const Inicio = () => {
 
       // Actualiza el saldo del cajero principal (bóveda)
       const responsePrincipal = await fetch(
-        `http://localhost:3000/balance_request/${idPrincipal}`,
+        `https://plataforma-bancaria.onrender.com/balance_request/${idPrincipal}`,
         {
           method: "PUT",
           headers: {
@@ -210,7 +212,7 @@ export const Inicio = () => {
 
       // Registrar el movimiento en el historial
       const responseMovimiento = await fetch(
-        `http://localhost:3000/post_devolver/`,
+        `https://plataforma-bancaria.onrender.com/post_devolver/`,
         {
           method: "POST",
           headers: {

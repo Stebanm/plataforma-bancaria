@@ -25,7 +25,9 @@ export const CrearUsuario = () => {
   // Funcion para traer todos los empleados.
   const fetchEmpleados = async () => {
     try {
-      const response = await fetch("http://localhost:3000/get_users");
+      const response = await fetch(
+        "https://plataforma-bancaria.onrender.com/get_users"
+      );
       if (!response.ok) {
         throw new Error("Network response was not ok");
       }
@@ -44,7 +46,7 @@ export const CrearUsuario = () => {
   const fetchEmpleadoId = async (idEmpleado) => {
     try {
       const response = await fetch(
-        `http://localhost:3000/get_users/${idEmpleado}`
+        `https://plataforma-bancaria.onrender.com/get_users/${idEmpleado}`
       );
       if (response.ok) {
         const data = await response.json();
@@ -77,7 +79,7 @@ export const CrearUsuario = () => {
     } else if (empleado.id_rol === 3) {
       try {
         const responseEmploye = await fetch(
-          `http://localhost:3000/balance_request/${idPrincipal}`,
+          `https://plataforma-bancaria.onrender.com/balance_request/${idPrincipal}`,
           {
             method: "PUT",
             headers: {
@@ -96,7 +98,7 @@ export const CrearUsuario = () => {
         }
 
         const responseMovimiento = await fetch(
-          `http://localhost:3000/post_devolver/`,
+          `https://plataforma-bancaria.onrender.com/post_devolver/`,
           {
             method: "POST",
             headers: {
@@ -115,7 +117,7 @@ export const CrearUsuario = () => {
         }
 
         const response = await fetch(
-          `http://localhost:3000/delete_user/${userId}`,
+          `https://plataforma-bancaria.onrender.com/delete_user/${userId}`,
           {
             method: "DELETE",
           }
@@ -136,7 +138,7 @@ export const CrearUsuario = () => {
     } else {
       try {
         const response = await fetch(
-          `http://localhost:3000/delete_user/${userId}`,
+          `https://plataforma-bancaria.onrender.com/delete_user/${userId}`,
           {
             method: "DELETE",
           }

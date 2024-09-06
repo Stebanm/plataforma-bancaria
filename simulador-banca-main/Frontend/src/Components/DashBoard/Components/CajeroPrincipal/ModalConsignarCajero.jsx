@@ -16,7 +16,9 @@ export const ModalConsignarCajero = ({
   // Trae todos los empleados
   const fetchEmpleados = async () => {
     try {
-      const response = await fetch("http://localhost:3000/get_users");
+      const response = await fetch(
+        "https://plataforma-bancaria.onrender.com/get_users"
+      );
       if (response.ok) {
         const userData = await response.json();
         setEmpleadoDetails(userData);
@@ -68,7 +70,7 @@ export const ModalConsignarCajero = ({
     } else {
       try {
         const responseEmpleado = await fetch(
-          `http://localhost:3000/balance_request/${id_empleado}`,
+          `https://plataforma-bancaria.onrender.com/balance_request/${id_empleado}`,
           {
             method: "PUT",
             headers: {
@@ -87,7 +89,7 @@ export const ModalConsignarCajero = ({
         }
 
         const responsePrincipal = await fetch(
-          `http://localhost:3000/balance_request/${user.id_empleado}`,
+          `https://plataforma-bancaria.onrender.com/balance_request/${user.id_empleado}`,
           {
             method: "PUT",
             headers: {
@@ -106,7 +108,7 @@ export const ModalConsignarCajero = ({
         }
 
         const responseMovimiento = await fetch(
-          `http://localhost:3000/post_movimiento`,
+          `https://plataforma-bancaria.onrender.com/post_movimiento`,
           {
             method: "POST",
             headers: {

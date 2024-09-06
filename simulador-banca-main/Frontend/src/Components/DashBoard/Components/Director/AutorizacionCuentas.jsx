@@ -10,7 +10,9 @@ export const AutorizacionCuentas = () => {
 
   const waitingAccounts = async () => {
     try {
-      const response = await fetch("http://localhost:3000/waiting");
+      const response = await fetch(
+        "https://plataforma-bancaria.onrender.com/waiting"
+      );
       if (!response.ok) {
         throw new Error("Network response was not ok");
       }
@@ -28,7 +30,7 @@ export const AutorizacionCuentas = () => {
     try {
       // Realiza una solicitud al servidor para cambiar el estado del cliente con el ID proporcionado
 
-      fetch(`http://localhost:3000/client_status/${id}`, {
+      fetch(`https://plataforma-bancaria.onrender.com/client_status/${id}`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",

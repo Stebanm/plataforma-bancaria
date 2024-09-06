@@ -75,7 +75,7 @@ export const AuthProvider = ({ children }) => {
   const updateUserData = async (userData) => {
     try {
       const response = await fetch(
-        "https://simulador-banca.onrender.com/UpdateUser",
+        "https://plataforma-bancaria.onrender.com/UpdateUser",
         {
           method: "POST",
           headers: {

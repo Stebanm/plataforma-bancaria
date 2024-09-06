@@ -15,7 +15,9 @@ export const BusquedaC = () => {
 
   const fetchData = async () => {
     try {
-      const response = await fetch("http://localhost:3000/get_search");
+      const response = await fetch(
+        "https://plataforma-bancaria.onrender.com/get_search"
+      );
       if (!response.ok) {
         throw new Error("Network response was not ok");
       }
@@ -29,7 +31,7 @@ export const BusquedaC = () => {
   const fetchAccounts = async (id_cliente) => {
     try {
       const response = await fetch(
-        `http://localhost:3000/user_accounts/${id_cliente}`
+        `https://plataforma-bancaria.onrender.com/user_accounts/${id_cliente}`
       );
       if (!response.ok) {
         throw new Error(`Network response was not ok for ID ${id_cliente}`);
@@ -65,7 +67,7 @@ export const BusquedaC = () => {
     const id_empleado = user.id_empleado;
     try {
       const response = await fetch(
-        `http://localhost:3000/create_account/${id_cliente}`,
+        `https://plataforma-bancaria.onrender.com/create_account/${id_cliente}`,
         {
           method: "POST",
           headers: {

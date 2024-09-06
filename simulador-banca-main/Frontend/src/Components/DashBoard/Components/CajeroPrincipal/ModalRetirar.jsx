@@ -14,7 +14,7 @@ export const ModalRetirar = ({ openModal, setOpenModal }) => {
   const fetchEmpleadoId = async () => {
     try {
       const response = await fetch(
-        `http://localhost:3000/get_users/${user.id_empleado}`
+        `https://plataforma-bancaria.onrender.com/get_users/${user.id_empleado}`
       );
       if (response.ok) {
         const userData = await response.json();
@@ -30,7 +30,9 @@ export const ModalRetirar = ({ openModal, setOpenModal }) => {
   // Función para traer información de la bóveda.
   const fetchBoveda = async () => {
     try {
-      const response = await fetch("http://localhost:3000/get_boveda");
+      const response = await fetch(
+        "https://plataforma-bancaria.onrender.com/get_boveda"
+      );
       if (response.ok) {
         const data = await response.json();
         setBovedaDetails(data);
@@ -62,7 +64,7 @@ export const ModalRetirar = ({ openModal, setOpenModal }) => {
     if (saldoBoveda > 0) {
       try {
         const salidaBoveda = await fetch(
-          `http://localhost:3000/salida_boveda/${id_empleado}`,
+          `https://plataforma-bancaria.onrender.com/salida_boveda/${id_empleado}`,
           {
             method: "POST",
             headers: { "Content-Type": "application/json" },
@@ -80,7 +82,7 @@ export const ModalRetirar = ({ openModal, setOpenModal }) => {
         }
 
         const responseCajero = await fetch(
-          `http://localhost:3000/balance_request/${id_empleado}`,
+          `https://plataforma-bancaria.onrender.com/balance_request/${id_empleado}`,
           {
             method: "PUT",
             headers: { "Content-Type": "application/json" },

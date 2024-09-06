@@ -31,7 +31,9 @@ const Card = () => {
   // Funcion para traer todos los empleados.
   const fetchEmpleados = async () => {
     try {
-      const response = await fetch("http://localhost:3000/get_users");
+      const response = await fetch(
+        "https://plataforma-bancaria.onrender.com/get_users"
+      );
       if (response.ok) {
         const userData = await response.json();
         setEmpleadoDetails(userData);
@@ -52,7 +54,9 @@ const Card = () => {
   // Función para traer información de la bóveda.
   const fetchBoveda = async () => {
     try {
-      const response = await fetch("http://localhost:3000/get_boveda");
+      const response = await fetch(
+        "https://plataforma-bancaria.onrender.com/get_boveda"
+      );
       if (response.ok) {
         const data = await response.json();
         setBovedaDetails(data);
@@ -63,8 +67,6 @@ const Card = () => {
       console.error("Error fetching data info:", response.status);
     }
   };
-
-  
 
   // Función para formatear el costo a miles sin decimales.
   const formatSaldo = (saldo) => {
@@ -269,7 +271,6 @@ const Card = () => {
                 </svg>
 
                 <span>Devolver a Bóveda</span>
-                
               </button>
             </div>
           </div>
@@ -277,9 +278,8 @@ const Card = () => {
       </div>
 
       <ModalRetirar openModal={openModal} setOpenModal={setOpenModal} />
-      
-      <ModalDevolver openModal1={openModal1} setOpenModal1={setOpenModal1} />
 
+      <ModalDevolver openModal1={openModal1} setOpenModal1={setOpenModal1} />
     </div>
   );
 };

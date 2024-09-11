@@ -13,7 +13,6 @@ import { CrearUsuario } from "./Components/Director/CrearUsuario";
 import { useAuth } from "../../context/AuthContext";
 import { Reportes } from "./Components/Director/Reportes";
 import { NavLink } from "react-router-dom";
-import { Dropdown } from "flowbite-react";
 import { Historial } from "./Components/Director/Historial";
 import { HistorialD } from "./Components/Director/HistorialD";
 import { BusquedaC } from "./Components/BusquedaC";
@@ -56,7 +55,7 @@ export const DashboardComponent = () => {
         // Verificar que se haya almacenado el nombre de usuario en el estado
         if (userName) {
           const response = await fetch(
-            `http://localhost:3000/get_client/${userName}`
+            `https://plataforma-bancaria.onrender.com/get_client/${userName}`
           );
           if (!response.ok) {
             throw new Error("Network response was not ok");
@@ -941,7 +940,7 @@ export const DashboardComponent = () => {
                       <div className="relative flex flex-col min-w-0 break-words bg-transparent border-0 shadow-none rounded-2xl bg-clip-border">
                         <img
                           className="w-1/1 mx-auto"
-                          src="/src/assets/Img/UsoVario/Analytics.svg"
+                          src={Analytics}
                           alt="sidebar illustrations"
                         />
                       </div>

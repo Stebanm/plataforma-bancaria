@@ -5,6 +5,7 @@ import { ContentCuentaAhorroJuridica } from "./Components/ContentCuentaAhorroJur
 import { ContentCuentaAhorroNatural } from "./Components/ContentCuentaAhorroNatural/ContentCuentaAhorroNatural";
 import { PrincipalPage } from "./Components/PrincipalPage";
 import userProfile from "../../assets/Img/Login/user.png";
+import Anality from "../../assets/Img/UsoVario/Analytics.svg";
 import { No_Disponible } from "./Components/NoDisponible";
 import { AutorizacionCuentas } from "./Components/Director/AutorizacionCuentas";
 import { CrearUsuario } from "./Components/Director/CrearUsuario";
@@ -667,7 +668,7 @@ export const DashboardComponent = () => {
                       >
                         <img
                           className="w-1/1 mx-auto"
-                          src="/src/assets/Img/UsoVario/Analytics.svg"
+                          src={Anality}
                           alt="sidebar illustrations"
                         />
                       </div>
@@ -1020,10 +1021,12 @@ export const DashboardComponent = () => {
                         <div className="flex flex-row items-center text-sm bg-white rounded-full focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-600 gap-x-3">
                           <div className="flex flex-col justify-end ps-8 my-0">
                             <p className="flex items-center justify-end text-sm font-semibold text-gray-700 dark:text-gray-200">
-                              {data?.nombre}
+                              {userData[0]?.nombre}
                             </p>
                             <p className="flex items-center justify-end text-sm text-gray-500 dark:text-gray-400">
-                              {data?.ip_tipodoc + " " + data?.documento}
+                              {userData[0]?.ip_tipodoc +
+                                " " +
+                                userData[0]?.documento}
                             </p>
                           </div>
                           <div className="flex items-center gap-x-6">
@@ -1042,15 +1045,17 @@ export const DashboardComponent = () => {
                     >
                       <Dropdown.Header>
                         <span className="block text-sm">
-                          {data?.nombre +
+                          {userData[0]?.nombre +
                             " " +
-                            data?.ip_primerapellido +
+                            userData[0]?.ip_primerapellido +
                             " " +
-                            data?.ip_segundoapellido}
+                            userData[0]?.ip_segundoapellido}
                         </span>
 
                         <span className="block truncate text-sm font-medium">
-                          {data?.ip_tipodoc + " " + data?.documento}
+                          {userData[0]?.ip_tipodoc +
+                            " " +
+                            userData[0]?.documento}
                         </span>
                       </Dropdown.Header>
                       <Dropdown.Item>
@@ -1117,89 +1122,6 @@ export const DashboardComponent = () => {
               </main>
             </div>
           </div>
-          {/* <section className="w-screen h-screen  flex justify-center items-center flex-col">
-            <header>
-              <span className="text-3xl font-bold">Módulo Cliente</span>
-            </header>
-            <main className="h-3/4 w-full bg-white flex justify-center items-center">
-              Lado principal
-              <div
-                className={`bg-white bg-gradient-to-r from-green to-white h-80 w-128 rounded-xl shadow-xl relative ${
-                  flipped ? "flip" : ""
-                }`}
-                onMouseEnter={handleMouseEnter}
-                onMouseLeave={handleMouseLeave}
-              >
-                <div
-                  className={`h-1/3 flex items-end ${flipped ? "hidden" : ""}`}
-                >
-                  <img className="pl-4" src={ChipCard} alt="" />
-                  <img className="text-stone-300" src={""} alt="" />
-                </div>
-                <div
-                  className={`h-2/3 flex justify-end items-end ${
-                    flipped ? "hidden" : ""
-                  }`}
-                >
-                  <img className="w-36 py-5" src={Namelogo} alt="" />
-                  <img className="h-32" src={Logo} alt="" />
-                </div>
-                <div
-                  className={`h-12 mt-8 bg-emerald-700 ${
-                    flipped ? "" : "hidden"
-                  }`}
-                >
-                  Contenido en el reverso de la tarjeta
-                  <div className="flip-content">
-                    <div
-                      className={`text-gray-800 pt-16 flex justify-center text-4xl `}
-                    >
-                      <p>${userData[0].saldo}</p>
-                    </div>
-                    <div
-                      className={`text-gray-800 mt-24 flex flex-col justify-end items-end px-2 `}
-                    >
-                      <p>{userData[0].descripcion}</p>
-                      <p>{userData[0].num_cuenta}</p>
-                      <p className="text-lg">
-                        {userData[0].ip_primernombre}{" "}
-                        {userData.ip_primerapellido}{" "}
-                        {userData[0].ip_primernombre}{" "}
-                        {userData.ip_primerapellido}{" "}
-                        {userData[0].ip_segundoapellido}
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </main>
-
-            <div>
-              <Dropdown
-                arrowIcon={false}
-                inline
-                label={
-                  <div className="flex flex-row items-center  text-sm bg-white rounded-full focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-600">
-                    {" "}
-                    <p className=" flex items-center text-sm bg-white rounded-full focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-600 ">
-                      {user?.username} - {user?.id_rol == 2 && <> Asesor </>}
-                      {user?.id_rol == 1 && <> Director </>}{" "}
-                    </p>
-                    <HiUserCircle color="gray" className="w-16 h-10 " />{" "}
-                  </div>
-                }
-              >
-                <Dropdown.Header>
-                  <span className="block text-sm">{user?.username}</span>
-                  <span className="block truncate text-sm font-medium">
-                    {user?.username}@ClarBank.com
-                  </span>
-                </Dropdown.Header>
-                <Dropdown.Divider />
-                <Dropdown.Item onClick={handlelogout}>Salir</Dropdown.Item>
-              </Dropdown>
-            </div>
-          </section> */}
         </>
       )}
     </>

@@ -964,7 +964,7 @@ export const DashboardComponent = () => {
                       <div className="relative flex flex-col min-w-0 break-words bg-transparent border-0 shadow-none rounded-2xl bg-clip-border">
                         <img
                           className="w-1/1 mx-auto"
-                          src="/src/assets/Img/UsoVario/Analytics.svg"
+                          src={Anality}
                           alt="sidebar illustrations"
                         />
                       </div>

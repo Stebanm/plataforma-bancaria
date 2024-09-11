@@ -22,7 +22,7 @@ export const ClientMovimientos = ({
 
     try {
       const response = await fetch(
-        `https://plataforma-bancaria.onrender.com/user_movimientos/${accountMovimientos}`
+        `http://localhost:3000/user_movimientos/${accountMovimientos}`
       );
       if (response.ok) {
         const data = await response.json();
@@ -289,7 +289,7 @@ export const ClientMovimientos = ({
 
       {contenidoCliente === "ClientView" && (
         <>
-          <section className="w-full md:flex-auto md:w-0">
+          <section className="w-full md:flex-auto lg:w-0">
             <div className="bg-white flex flex-col justify-between flex-1 rounded p-4">
               <h1 className="text-xl font-semibold">Tus movimientos</h1>
 

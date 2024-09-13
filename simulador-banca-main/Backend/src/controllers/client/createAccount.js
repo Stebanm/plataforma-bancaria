@@ -11,7 +11,7 @@ const createAccount = async (req, res) => {
   try {
     const result = await pool.query(
       "INSERT INTO detalle_cuenta (id_cliente, id_tcuenta, id_empleado, saldo, estado) VALUES ($1, $2, $3, $4, $5) RETURNING *",
-      [id_cliente, id_tcuenta, id_empleado, 0, "Autorizado"]
+      [id_cliente, id_tcuenta, id_empleado, 0, "Pendiente"]
     );
 
     res.status(201).json(result.rows[0]);

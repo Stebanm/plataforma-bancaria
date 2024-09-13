@@ -34,11 +34,12 @@ export const Movimientos = () => {
   //Login, user context
   const { user } = useAuth();
 
+
   // Funcion para traer un empleado por id.
   const fetchEmpleadoId = async () => {
     try {
       const response = await fetch(
-        `https://plataforma-bancaria.onrender.com/get_users/${user.id_empleado}`
+        `http://localhost:3000/get_users/${user.id_empleado}`
       );
       if (response.ok) {
         const userData = await response.json();
@@ -54,9 +55,7 @@ export const Movimientos = () => {
   // funcion para traer todos los empleados.
   const fetchEmpleados = async () => {
     try {
-      const response = await fetch(
-        "https://plataforma-bancaria.onrender.com/get_users"
-      );
+      const response = await fetch("http://localhost:3000/get_users");
       if (response.ok) {
         const data = await response.json();
         setEmpleadoDetails(data);
@@ -91,7 +90,7 @@ export const Movimientos = () => {
 
       // Realizar la consulta a la base de datos utilizando el número de cuenta convertido
       const response = await fetch(
-        `https://plataforma-bancaria.onrender.com/get_account/${accountNumberInt}`
+        `http://localhost:3000/get_account/${accountNumberInt}`
       );
       if (!response.ok) {
         throw new Error("Network response was not ok");
@@ -144,7 +143,7 @@ export const Movimientos = () => {
       try {
         // Realiza una solicitud al servidor para cambiar el estado del cliente con el ID proporcionado
         const responseClient = await fetch(
-          `https://plataforma-bancaria.onrender.com/update_balance/${id}`,
+          `http://localhost:3000/update_balance/${id}`,
           {
             method: "PUT",
             headers: {
@@ -160,7 +159,7 @@ export const Movimientos = () => {
         }
 
         const responseEmploye = await fetch(
-          `https://plataforma-bancaria.onrender.com/balance_request/${idEmpleado}`,
+          `http://localhost:3000/balance_request/${idEmpleado}`,
           {
             method: "PUT",
             headers: {
@@ -179,7 +178,7 @@ export const Movimientos = () => {
         }
 
         const responseMovimiento = await fetch(
-          `https://plataforma-bancaria.onrender.com/post_movimiento`,
+          `http://localhost:3000/post_movimiento`,
           {
             method: "POST",
             headers: {
@@ -241,7 +240,7 @@ export const Movimientos = () => {
 
       // Realizar la consulta a la base de datos utilizando el número de cuenta convertido
       const response = await fetch(
-        `https://plataforma-bancaria.onrender.com/get_account/${accountNumberInt}`
+        `http://localhost:3000/get_account/${accountNumberInt}`
       );
       if (!response.ok) {
         throw new Error("Network response was not ok");
@@ -292,7 +291,7 @@ export const Movimientos = () => {
       try {
         // Realiza una solicitud al servidor para actualizar el saldo del cliente
         const responseClient = await fetch(
-          `https://plataforma-bancaria.onrender.com/update_balance/${id}`,
+          `http://localhost:3000/update_balance/${id}`,
           {
             method: "PUT",
             headers: {
@@ -312,7 +311,7 @@ export const Movimientos = () => {
 
         // Realiza una solicitud al servidor para actualizar el saldo del empleado
         const responseEmploye = await fetch(
-          `https://plataforma-bancaria.onrender.com/balance_request/${idEmpleado}`,
+          `http://localhost:3000/balance_request/${idEmpleado}`,
           {
             method: "PUT",
             headers: {
@@ -333,7 +332,7 @@ export const Movimientos = () => {
         }
 
         const responseMovimiento = await fetch(
-          `https://plataforma-bancaria.onrender.com/post_movimiento`,
+          `http://localhost:3000/post_movimiento`,
           {
             method: "POST",
             headers: {
@@ -375,7 +374,7 @@ export const Movimientos = () => {
 
     try {
       const response = await fetch(
-        `https://plataforma-bancaria.onrender.com/balance_request/${idEmpleado}`,
+        `http://localhost:3000/balance_request/${idEmpleado}`,
         {
           method: "PUT",
           headers: {
@@ -410,7 +409,7 @@ export const Movimientos = () => {
 
     try {
       const response = await fetch(
-        `https://plataforma-bancaria.onrender.com/balance_request/${idEmpleado}`,
+        `http://localhost:3000/balance_request/${idEmpleado}`,
         {
           method: "PUT",
           headers: {
@@ -470,7 +469,7 @@ export const Movimientos = () => {
     try {
       // Actualiza el saldo del cajero
       const responseCajero = await fetch(
-        `https://plataforma-bancaria.onrender.com/balance_request/${idEmpleado}`,
+        `http://localhost:3000/balance_request/${idEmpleado}`,
         {
           method: "PUT",
           headers: {
@@ -492,7 +491,7 @@ export const Movimientos = () => {
 
       // Actualiza el saldo del cajero principal (bóveda)
       const responsePrincipal = await fetch(
-        `https://plataforma-bancaria.onrender.com/balance_request/${idPrincipal}`,
+        `http://localhost:3000/balance_request/${idPrincipal}`,
         {
           method: "PUT",
           headers: {
@@ -514,7 +513,7 @@ export const Movimientos = () => {
 
       // Registrar el movimiento en el historial
       const responseMovimiento = await fetch(
-        `https://plataforma-bancaria.onrender.com/post_devolver/`,
+        `http://localhost:3000/post_devolver/`,
         {
           method: "POST",
           headers: {
@@ -569,185 +568,11 @@ export const Movimientos = () => {
       {
         <div
           className="flex justify-center items-center flex-col gap-x-14 text-center"
-          style={{ minHeight: "75vh" }}
+          style={{ minHeight: "87vh" }}
         >
-          <h1 className="font-semibold text-2xl">
-            Seleccione el movimiento que desee realizar
-          </h1>
-
-          <div className="w-full flex overflow-hidden border-gray-200 dark:bg-gray-800 flex-col sm:flex sm:items-center sm:justify-between">
-            <div className="w-full p-4 max-w-5xl mx-auto">
-              <div className="mt-4 ">
-                <div className="flex flex-col-reverse sm:flex-row sm:items-start sm:justify-between  bg-DarkSlate px-4 py-8 rounded">
-                  <div className="flex flex-col justify-center gap-y-2 h-24 ">
-                    <div className="flex items-center ">
-                      <p className="font-regular text-2xl text-white dark:text-gray-200 ">
-                        Saldo total
-                      </p>
-                    </div>
-                    <div className="flex jutify-center items-end gap-x-2">
-                      <p className="font-semibold text-3xl text-white dark:text-gray-300">
-                        {formatSaldo(idEmpleadoDetails.saldo)}
-                      </p>
-                    </div>
-                  </div>
-
-                  <div className="   grid gap-x-4 gap-y-4 mt-4 sm:flex sm:items-start sm:justify-between ">
-                    <button
-                      className="flex justify-center items-center gap-x-2 px-3 py-2 rounded-md text-white backdrop-blur-sm hover:backdrop-blur-lg bg-white/30 shadow"
-                      onClick={() => setOpenModal3(true)}
-                    >
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                        strokeWidth={1.4}
-                        stroke="currentColor"
-                        className="size-5"
-                      >
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          d="M9 15 3 9m0 0 6-6M3 9h12a6 6 0 0 1 0 12h-3"
-                        />
-                      </svg>
-
-                      <p>Entregar saldo</p>
-                    </button>
-                    <Modal
-                      className="bg-black bg-opacity-60 flex justify-center items-center w-screen h-screen p-0"
-                      show={openModal3}
-                      size="md"
-                      onClose={() => setOpenModal3(false)}
-                      popup
-                    >
-                      <Modal.Header>
-                        <span className="text-xl py-2 pl-4 pr-3 font-medium text-gray-900 dark:text-white">
-                          Entrega de Saldo
-                        </span>
-                      </Modal.Header>
-                      <Modal.Body className="px-5 pt-2 pb-5">
-                        <div className="space-y-6">
-                          <div>
-                            <label
-                              htmlFor="amount"
-                              className="font-medium text-gray-700 dark:text-white"
-                            >
-                              Monto a entregar:
-                            </label>
-                            <input
-                              id="amount"
-                              type="number"
-                              placeholder="Monto a consignar"
-                              value={amount}
-                              onChange={(e) => setAmount(e.target.value)}
-                              className={`w-full px-3 py-2 border rounded-md focus:outline-none`}
-                            />
-                          </div>
-                          <div className="w-full">
-                            <button
-                              onClick={handleDevolverSaldo}
-                              className={`w-full bg-green hover:bg-green hover:scale-105 duration-100 text-white font-bold py-2 px-4 rounded transition-all`}
-                            >
-                              Enviar
-                            </button>
-                          </div>
-                        </div>
-                      </Modal.Body>
-                    </Modal>
-                    {idEmpleadoDetails.estado === "Solicitud" && (
-                      <button
-                        className="flex justify-center items-center gap-x-2 px-3 py-2 rounded-md text-white backdrop-blur-sm hover:backdrop-blur-lg bg-white/30 shadow"
-                        onClick={handleCancelarSolicitud}
-                      >
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          fill="none"
-                          viewBox="0 0 24 24"
-                          strokeWidth={1.5}
-                          stroke="currentColor"
-                          className="size-5"
-                        >
-                          <path
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            d="M6 18 18 6M6 6l12 12"
-                          />
-                        </svg>
-
-                        <p>Cancelar solicitud</p>
-                      </button>
-                    )}
-                    <>
-                      {idEmpleadoDetails.estado === "Activo" && (
-                        <>
-                          <button
-                            className="flex justify-center items-center gap-x-2 px-3 py-2 rounded-md text-white backdrop-blur-sm hover:backdrop-blur-lg bg-white/30 shadow"
-                            onClick={() => setOpenModal2(true)}
-                          >
-                            <svg
-                              xmlns="http://www.w3.org/2000/svg"
-                              fill="none"
-                              viewBox="0 0 24 24"
-                              strokeWidth={1.4}
-                              stroke="currentColor"
-                              className="size-5"
-                            >
-                              <path
-                                strokeLinecap="round"
-                                strokeLinejoin="round"
-                                d="M13.5 6H5.25A2.25 2.25 0 0 0 3 8.25v10.5A2.25 2.25 0 0 0 5.25 21h10.5A2.25 2.25 0 0 0 18 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25"
-                              />
-                            </svg>
-                            <p>Solicitar saldo</p>
-                          </button>
-                          <Modal
-                            className="bg-black bg-opacity-60 flex justify-center items-center w-screen h-screen p-0"
-                            show={openModal2}
-                            size="md"
-                            onClose={() => setOpenModal2(false)}
-                            popup
-                          >
-                            <Modal.Header>
-                              <span className="text-xl py-2 pl-4 pr-3 font-medium text-gray-900 dark:text-white">
-                                Solicitar Saldo
-                              </span>
-                            </Modal.Header>
-                            <Modal.Body className="px-5 pt-2 pb-5">
-                              <div className="space-y-6">
-                                <div>
-                                  <label
-                                    htmlFor="amount"
-                                    className="font-medium text-gray-700 dark:text-white"
-                                  >
-                                    Monto a Solicitar:
-                                  </label>
-                                  <input
-                                    id="amount"
-                                    type="number"
-                                    placeholder="Monto a consignar"
-                                    value={amount}
-                                    onChange={(e) => setAmount(e.target.value)}
-                                    className={`w-full px-3 py-2 border rounded-md focus:outline-none`}
-                                  />
-                                </div>
-                                <div className="w-full">
-                                  <button
-                                    onClick={handleSolicitarSaldo}
-                                    className={`w-full bg-green hover:bg-green hover:scale-105 duration-100 text-white font-bold py-2 px-4 rounded transition-all`}
-                                  >
-                                    Enviar
-                                  </button>
-                                </div>
-                              </div>
-                            </Modal.Body>
-                          </Modal>
-                        </>
-                      )}
-                    </>
-                  </div>
-                </div>
-              </div>
+            <h1 className="text-2xl font-semibold text-gray-800 dark:text-white">
+      Selecciona el movimiento que desea realizar
+    </h1>
 
               <div className=" grid gap-x-8 gap-y-4 mt-4 sm:flex sm:items-start sm:justify-between  ">
                 <div className="flex-1 ">
@@ -1067,8 +892,6 @@ export const Movimientos = () => {
                 </div>
               </div>
             </div>
-          </div>
-        </div>
       }
     </>
   );

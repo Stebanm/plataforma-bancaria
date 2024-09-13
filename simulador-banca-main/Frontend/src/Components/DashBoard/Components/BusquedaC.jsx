@@ -255,7 +255,11 @@ export const BusquedaC = () => {
                           const clientAccounts =
                             accounts[client.id_cliente] || [];
 
-                          const totalAccounts = clientAccounts.length;
+                          const filterAccounts = clientAccounts.filter(
+                            (account) => account.estado === "Autorizado"
+                          );
+
+                          const totalAccounts = filterAccounts.length;
 
                           const creationDate =
                             clientAccounts.length > 0

@@ -38,7 +38,7 @@ export const BusquedaC = () => {
   const fetchAccounts = async (id_cliente) => {
     try {
       const response = await fetch(
-        `http://localhost:3000/user_accounts/${id_cliente}`
+        `https://plataforma-bancaria.onrender.com/user_accounts/${id_cliente}`
       );
       if (!response.ok) {
         throw new Error(`Network response was not ok for ID ${id_cliente}`);

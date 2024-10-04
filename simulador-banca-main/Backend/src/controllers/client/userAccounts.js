@@ -8,7 +8,18 @@ const userAccounts = async (req, res) => {
 
   try {
     const result = await pool.query(
-      "SELECT * FROM detalle_cuenta WHERE id_cliente = $1 ORDER BY fecha ASC",
+      `SELECT 
+       dc.id_detalle, 
+       c.id_cliente, 
+       c.username, 
+       dc.num_cuenta, 
+       tc.descripcion, 
+       tc.id_tcuenta,
+       dc.saldo, 
+       dc.fecha, 
+       dc.estado
+       FROM detalle_cuenta AS dc JOIN cliente AS c ON dc.id_cliente = c.id_cliente
+       JOIN tipo_cuentas AS tc ON dc.id_tcuenta = tc.id_tcuenta WHERE c.id_cliente = $1 ORDER BY dc.id_detalle ASC`,
       [id_cliente]
     );
 

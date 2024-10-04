@@ -12,8 +12,8 @@ const updateInfo = async (req, res) => {
     tipo_documento,
     num_documento,
     lugar_expedicion,
-    fecha_expedicion, // Asegúrate de que este sea un valor de fecha
-    fecha_nacimiento, // Asegúrate de que este sea un valor de fecha
+    fecha_expedicion,
+    fecha_nacimiento,
     ciudad_nacimiento,
     genero,
     estado_civil,
@@ -51,8 +51,8 @@ const updateInfo = async (req, res) => {
         tipo_documento,
         num_documento,
         lugar_expedicion,
-        fecha_expedicion, // Debería ser un valor de fecha, formato 'YYYY-MM-DD'
-        fecha_nacimiento, // Debería ser un valor de fecha, formato 'YYYY-MM-DD'
+        fecha_expedicion,
+        fecha_nacimiento,
         ciudad_nacimiento,
         genero,
         estado_civil,

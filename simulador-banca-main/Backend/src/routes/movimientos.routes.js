@@ -8,12 +8,17 @@ const salidaBoveda = require("../controllers/movimientos/salidaBoveda");
 const getBoveda = require("../controllers/movimientos/getBoveda");
 const getMovimientos = require("../controllers/movimientos/getMovimientos");
 const userMovimientos = require("../controllers/movimientos/userMovimientos");
+const accountMovimientos = require("../controllers/movimientos/accountMovimientos");
 
 router.get("/get_boveda", getBoveda.getBoveda);
 router.get("/get_movimientos", getMovimientos.getMovimientos);
 router.get(
   "/user_movimientos/:accountMovimientos",
   userMovimientos.userMovimientos
+);
+router.get(
+  "/account_movimientos/:accountMovimientos",
+  accountMovimientos.accountMovimientos
 );
 router.post("/post_movimiento", postMovimietos.postMovimietos);
 router.post("/post_devolver", postDevolver.postDevolver);

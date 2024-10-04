@@ -6,10 +6,7 @@ const yaml = require("js-yaml");
 const fs = require("fs");
 require("dotenv").config();
 
-const url =
-  process.env.NODE_ENV === "production"
-    ? "https://plataforma-bancaria.vercel.app"
-    : "http://localhost:5173/";
+const url = process.env.CORS_ALLOWED.split(",");
 
 app.use(
   cors({
@@ -25,7 +22,6 @@ const swaggerDocument = yaml.load(fs.readFileSync("./swagger.yaml", "utf-8"));
 app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
 // Configuración de Rutas
-
 const userRoutes = require("./src/routes/users.routes");
 const detailsRoutes = require("./src/routes/details.routes");
 const formsRoutes = require("./src/routes/form.routes");

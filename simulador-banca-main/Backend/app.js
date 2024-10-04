@@ -6,9 +6,14 @@ const yaml = require("js-yaml");
 const fs = require("fs");
 require("dotenv").config();
 
+const url =
+  process.env.NODE_ENV === "production"
+    ? "https://plataforma-bancaria.vercel.app"
+    : "http://localhost:5173/";
+
 app.use(
   cors({
-    origin: "https://plataforma-bancaria.vercel.app",
+    origin: url,
     methods: "GET, HEAD ,PUT ,PATCH ,POST ,DELETE",
   })
 );

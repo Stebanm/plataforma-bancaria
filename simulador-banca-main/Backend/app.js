@@ -6,7 +6,10 @@ const yaml = require("js-yaml");
 const fs = require("fs");
 require("dotenv").config();
 
-const url = process.env.CORS_ALLOWED.split(",");
+const url =
+  process.env.NODE_ENV === "production"
+    ? ["https://plataforma-bancaria.vercel.app"]
+    : ["http://localhost:5173"];
 
 app.use(
   cors({
@@ -35,3 +38,5 @@ const puerto = 3000;
 app.listen(puerto, () => {
   console.log(`Servidor escuchando en ${process.env.HOST}`);
 });
+
+console.log(`El entorno actual es: ${process.env.NODE_ENV}`);

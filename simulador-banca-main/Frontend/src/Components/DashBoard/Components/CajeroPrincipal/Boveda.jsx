@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { saldoFormatter } from "../../../../utils/saldoFormatter";
 
 const Boveda = () => {
   const [bovedaDetails, setBovedaDetails] = useState("");
@@ -19,19 +20,6 @@ const Boveda = () => {
     } catch (error) {
       console.error("Error fetching data info:", response.status);
     }
-  };
-
-  // Función para formatear el costo a miles sin decimales.
-  const formatSaldo = (saldo) => {
-    // Crea una instancia de Intl.NumberFormat con la configuración regional "es-CO" (Colombia)
-    const formatter = new Intl.NumberFormat("es-CO", {
-      style: "currency",
-      currency: "COP",
-      minimumFractionDigits: 2,
-    });
-
-    // Formatea el costo usando la configuración especificada.
-    return formatter.format(saldo);
   };
 
   // Función para manejar el clic del ícono del ojo
@@ -56,7 +44,7 @@ const Boveda = () => {
                   <div className="flex items-center justify-between mt-2">
                     <p className="text-lg md:text-xl lg:text-3xl xl:text-4xl 2xl:text-3xl font-bold text-white">
                       {isVisible
-                        ? formatSaldo(bovedaDetails.saldo_boveda)
+                        ? saldoFormatter(bovedaDetails.saldo_boveda)
                         : "****"}
                     </p>
 

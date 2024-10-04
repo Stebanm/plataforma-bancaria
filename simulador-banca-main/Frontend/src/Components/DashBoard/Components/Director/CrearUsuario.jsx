@@ -9,6 +9,7 @@ import { data } from "autoprefixer";
 import { useAuth } from "../../../../context/AuthContext";
 import { ModalConsignarCajero } from "../CajeroPrincipal/ModalConsignarCajero";
 import ModalInfoCajeros from "../ModalInfoCajeros";
+import { saldoFormatter } from "../../../../utils/saldoFormatter";
 
 export const CrearUsuario = () => {
   const [empleadoDetails, setEmpleadoDetails] = useState([]);
@@ -161,19 +162,6 @@ export const CrearUsuario = () => {
   };
 
   const cajerosLength = empleadoDetails.filter((users) => users.id_rol === 3);
-
-  // Función para formatear el costo a miles sin decimales.
-  const formatSaldo = (saldo) => {
-    // Crea una instancia de Intl.NumberFormat con la configuración regional "es-CO" (Colombia)
-    const formatter = new Intl.NumberFormat("es-CO", {
-      style: "currency",
-      currency: "COP",
-      minimumFractionDigits: 2,
-    });
-
-    // Formatea el costo usando la configuración especificada.
-    return formatter.format(saldo);
-  };
 
   const handleEmpleado = (idEmpleado) => {
     fetchEmpleadoId(idEmpleado);
@@ -563,7 +551,7 @@ export const CrearUsuario = () => {
 
                                 <td className="px-6 py-4 text-sm text-gray-500 dark:text-gray-300 whitespace-nowrap">
                                   <div className="w-full inline-flex justify-center items-center">
-                                    <span>{formatSaldo(date.saldo)}</span>
+                                    <span>{saldoFormatter(date.saldo)}</span>
                                   </div>
                                 </td>
 

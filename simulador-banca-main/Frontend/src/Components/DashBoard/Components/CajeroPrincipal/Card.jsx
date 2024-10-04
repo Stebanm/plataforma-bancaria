@@ -3,6 +3,7 @@ import { useAuth } from "../../../../context/AuthContext";
 import { toast } from "react-toastify";
 import { ModalRetirar } from "./ModalRetirar";
 import { ModalDevolver } from "./ModalDevolver";
+import { saldoFormatter } from "../../../../utils/saldoFormatter";
 
 const Card = () => {
   const [idEmpleadoDetails, setIdEmpleadoDetails] = useState("");
@@ -68,19 +69,6 @@ const Card = () => {
     }
   };
 
-  // Función para formatear el costo a miles sin decimales.
-  const formatSaldo = (saldo) => {
-    // Crea una instancia de Intl.NumberFormat con la configuración regional "es-CO" (Colombia)
-    const formatter = new Intl.NumberFormat("es-CO", {
-      style: "currency",
-      currency: "COP",
-      minimumFractionDigits: 2,
-    });
-
-    // Formatea el costo usando la configuración especificada.
-    return formatter.format(saldo);
-  };
-
   // Función para manejar el clic del ícono del ojo
   const toggleVisibility = () => {
     setIsVisible(!isVisible);
@@ -122,7 +110,7 @@ const Card = () => {
                 Saldo T. Cajero Principal
               </p>
               <h5 className="text-xl md:text-lg lg:text-xl xl:text-2xl 2xl:text-3xl font-bold text-white">
-                {formatSaldo(idEmpleadoDetails.saldo)}
+                {saldoFormatter(idEmpleadoDetails.saldo)}
               </h5>
             </div>
           </div>
@@ -151,7 +139,9 @@ const Card = () => {
             </p>
             <div className="flex items-center justify-between">
               <h5 className="text-xl md:text-lg lg:text-xl xl:text-2xl 2xl:text-3xl font-bold text-white">
-                {isVisible ? formatSaldo(bovedaDetails.saldo_boveda) : "****"}
+                {isVisible
+                  ? saldoFormatter(bovedaDetails.saldo_boveda)
+                  : "****"}
               </h5>
               <div className="text-white flex justify-center items-center">
                 <button onClick={toggleVisibility}>
@@ -221,7 +211,7 @@ const Card = () => {
                 Saldo de oficina
               </p>
               <h5 className="text-3xl sm:text-2xl xl:text-3xl font-bold text-white">
-                {formatSaldo(saldoOficina())}
+                {saldoFormatter(saldoOficina())}
               </h5>
             </div>
           </div>

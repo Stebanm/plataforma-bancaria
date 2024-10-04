@@ -27,12 +27,9 @@ export const AllTarjets = ({ userData, onSelectAccount, contenidoCliente }) => {
                   <React.Fragment key={data.id_detalle}>
                     <div className="w-full border-b border-gray-200 py-3">
                       <li>
-                        <div className="flex flex-col md:flex-row justify-between items-center gap-4">
+                        <div className="flex flex-row justify-between items-center">
                           <div className="flex flex-row justify-center items-center">
-                            <img
-                              src={CreditCard}
-                              className="h-14 sm:h-14 md:h-16 lg:h-20 xl:h-24"
-                            />
+                            <img src={CreditCard} className="h-16 sm:h-20" />
                             <div className="py-6 px-8 flex flex-col gap-4">
                               <div className="flex flex-col items-start justify-center   font-semibold leading-normal text-black">
                                 <div className="text-normal sm:text-lg md:text-xl">
@@ -44,9 +41,9 @@ export const AllTarjets = ({ userData, onSelectAccount, contenidoCliente }) => {
                               </div>
                             </div>
                           </div>
-                          <div className="flex flex-col md:flex-row justify-center items-center md:items-end gap-4">
-                            <div className="flex flex-row flex-wrap justify-center items-center gap-4">
-                              <div className="flex items-center justify-center px-3 py-2 rounded-full gap-x-2 bg-emerald-100/60 dark:bg-gray-800">
+                          <div className="flex flex-col justify-center items-end gap-4">
+                            <div className="flex flex-col justify-center items-center gap-4">
+                              <div className="flex justify-center items-center px-3 py-2 rounded-full gap-x-2 bg-emerald-100/60 dark:bg-gray-800">
                                 <span className="text-emerald-500 text-xs sm:text-sm md:text-base">
                                   <svg
                                     xmlns="http://www.w3.org/2000/svg"
@@ -86,7 +83,7 @@ export const AllTarjets = ({ userData, onSelectAccount, contenidoCliente }) => {
                 <React.Fragment key={data.id_detalle}>
                   <div className="w-full border-b border-gray-200 py-3">
                     <li>
-                      <div className="flex flex-col md:flex-row justify-between items-center gap-4">
+                      <div className="flex flex-row justify-between items-center">
                         <div className="flex flex-row justify-center items-center">
                           <img src={CreditCard} className="h-16 sm:h-20" />
                           <div className="py-6 px-8 flex flex-col gap-4">
@@ -100,10 +97,10 @@ export const AllTarjets = ({ userData, onSelectAccount, contenidoCliente }) => {
                             </div>
                           </div>
                         </div>
-                        <div className="flex flex-col md:flex-row justify-center items-center md:items-end gap-4">
+                        <div className="flex flex-col justify-center items-end gap-4">
                           {data.estado_cuenta === "Autorizado" && (
-                            <div className="flex flex-row flex-wrap justify-center items-center gap-4">
-                              <div className="flex items-center justify-center px-3 py-2 rounded-full gap-x-2 bg-emerald-100/60 dark:bg-gray-800">
+                            <div className="flex flex-col justify-center items-center gap-4">
+                              <div className="flex justify-center items-center px-3 py-2 rounded-full gap-x-2 bg-emerald-100/60 dark:bg-gray-800">
                                 <span className="text-emerald-500 text-xs sm:text-sm md:text-base">
                                   <svg
                                     xmlns="http://www.w3.org/2000/svg"

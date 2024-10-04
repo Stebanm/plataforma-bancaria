@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import userProfile from "../../../../assets/Img/Login/user.png";
 import ModalInfoCajeros from "../ModalInfoCajeros";
+import { saldoFormatter } from "../../../../utils/saldoFormatter";
 
 export const MovimientosCajeros = () => {
   const [movCajeros, setMoviCajeros] = useState([]);
@@ -44,15 +45,6 @@ export const MovimientosCajeros = () => {
   const closeModal = () => {
     setShowModal(false);
     setModalCajero(null);
-  };
-
-  const formatSaldo = (saldo) => {
-    const formatter = new Intl.NumberFormat("es-CO", {
-      style: "currency",
-      currency: "COP",
-      minimumFractionDigits: 0,
-    });
-    return formatter.format(saldo);
   };
 
   return (
@@ -147,7 +139,7 @@ export const MovimientosCajeros = () => {
 
                             <td className="px-4 py-4 text-sm font-medium text-gray-700 dark:text-gray-200 whitespace-nowrap">
                               <div className="w-full inline-flex justify-center items-center gap-x-3">
-                                <span>{formatSaldo(cajero.saldo)}</span>
+                                <span>{saldoFormatter(cajero.saldo)}</span>
                               </div>
                             </td>
 

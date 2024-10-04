@@ -7,6 +7,7 @@ import { useState, useEffect } from "react";
 import { toast } from "react-toastify";
 import { useAuth } from "../../../../context/AuthContext";
 import Transfers from "../CajeroPrincipal/Transfers";
+import { saldoFormatter } from "../../../../utils/saldoFormatter";
 
 export const Inicio = () => {
   //General Status
@@ -244,19 +245,6 @@ export const Inicio = () => {
     }
   };
 
-  // Función para formatear el costo a miles sin decimales.
-  const formatSaldo = (saldo) => {
-    // Crea una instancia de Intl.NumberFormat con la configuración regional "es-CO" (Colombia)
-    const formatter = new Intl.NumberFormat("es-CO", {
-      style: "currency",
-      currency: "COP",
-      minimumFractionDigits: 0,
-    });
-
-    // Formatea el costo usando la configuración especificada.
-    return formatter.format(saldo);
-  };
-
   return (
     <>
       {
@@ -276,7 +264,7 @@ export const Inicio = () => {
                     </div>
                     <div className="flex jutify-center items-center gap-x-2">
                       <p className="font-semibold text-3xl text-white dark:text-gray-300">
-                        {formatSaldo(idEmpleadoDetails.saldo)}
+                        {saldoFormatter(idEmpleadoDetails.saldo)}
                       </p>
                     </div>
                   </div>

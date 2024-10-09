@@ -6,13 +6,15 @@ import { ModalDevolver } from "./ModalDevolver";
 import { saldoFormatter } from "../../../../utils/saldoFormatter";
 
 const Card = () => {
+  const [empleadoDetails, setEmpleadoDetails] = useState([]);
   const [idEmpleadoDetails, setIdEmpleadoDetails] = useState("");
+  const [saldoPrincipal, setSaldoPrincipal] = useState("");
   const [bovedaDetails, setBovedaDetails] = useState("");
+  const [saldoBoveda, setSaldoBoveda] = useState("");
+
   const [isVisible, setIsVisible] = useState(false);
   const [openModal, setOpenModal] = useState(false);
   const [openModal1, setOpenModal1] = useState(false);
-
-  const [empleadoDetails, setEmpleadoDetails] = useState([]);
 
   //Login, user context
   const { user } = useAuth();
@@ -23,8 +25,7 @@ const Card = () => {
       0
     );
 
-    const sumaTotal =
-      sumaSaldosEmpleados + parseFloat(bovedaDetails.saldo_boveda);
+    const sumaTotal = sumaSaldosEmpleados + saldoBoveda;
 
     return sumaTotal;
   };
@@ -43,6 +44,9 @@ const Card = () => {
           (users) => users.id_rol === 4
         );
 
+        const saldoCajeroPrincipal = parseFloat(empleadoPrincipal[0].saldo);
+        setSaldoPrincipal(saldoCajeroPrincipal);
+
         return setIdEmpleadoDetails(empleadoPrincipal[0]);
       } else {
         console.error("Error fetching user info:", response.status);
@@ -58,9 +62,11 @@ const Card = () => {
       const response = await fetch(
         "https://plataforma-bancaria.onrender.com/get_boveda"
       );
+
       if (response.ok) {
         const data = await response.json();
-        setBovedaDetails(data);
+        const boveda = parseFloat(data.saldo_boveda);
+        setSaldoBoveda(boveda);
       } else {
         console.error("Error fetching data info:", response.status);
       }
@@ -107,10 +113,10 @@ const Card = () => {
                 </svg>
               </div>
               <p className="text-sm font-semibold leading-normal uppercase text-white dark:opacity-60">
-                Saldo T. Cajero Principal
+                Saldo Cajero Principal
               </p>
               <h5 className="text-xl md:text-lg lg:text-xl xl:text-2xl 2xl:text-3xl font-bold text-white">
-                {saldoFormatter(idEmpleadoDetails.saldo)}
+                {saldoFormatter(saldoPrincipal)}
               </h5>
             </div>
           </div>
@@ -135,13 +141,11 @@ const Card = () => {
               </svg>
             </div>
             <p className="text-sm font-semibold leading-normal uppercase text-white dark:opacity-60">
-              Saldo T. en Bóveda
+              Saldo en Bóveda
             </p>
             <div className="flex items-center justify-between">
               <h5 className="text-xl md:text-lg lg:text-xl xl:text-2xl 2xl:text-3xl font-bold text-white">
-                {isVisible
-                  ? saldoFormatter(bovedaDetails.saldo_boveda)
-                  : "****"}
+                {isVisible ? saldoFormatter(saldoBoveda) : "****"}
               </h5>
               <div className="text-white flex justify-center items-center">
                 <button onClick={toggleVisibility}>

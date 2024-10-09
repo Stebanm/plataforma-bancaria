@@ -2,11 +2,15 @@ import React, { useEffect, useState } from "react";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { ModalAutorizaciones } from "../ModalAutorizaciones";
+import { Pagination } from "../../../Pagination/Pagination";
 
 export const AutorizacionCuentas = () => {
   const [dataUser, setDataUser] = useState([]);
   const [modalData, setModalData] = useState(null);
   const [showModal, setShowModal] = useState(false);
+
+  const [movementsPage, setMovementsPage] = useState(9);
+  const [currentPage, setCurrentPage] = useState(1);
 
   const waitingAccounts = async () => {
     try {
@@ -65,6 +69,10 @@ export const AutorizacionCuentas = () => {
     }
   };
 
+  const movementsTotal = dataUser.length;
+  const lastIndex = currentPage * movementsPage;
+  const firstIndex = lastIndex - movementsPage;
+
   const waitingLength = dataUser.length;
 
   const openModal = (dataUser) => {
@@ -84,7 +92,7 @@ export const AutorizacionCuentas = () => {
   return (
     <>
       <section className="container p-4 mx-auto" style={{ minHeight: "87vh" }}>
-        <div className="flex flex-col justify-center items-between h-full">
+        <div className="flex flex-col justify-center">
           <div className="flex justify-between items-center gap-x-3">
             <div className="flex flex-col justify-center items-start">
               <div className="flex flex-row items-center gap-x-3">
@@ -101,9 +109,9 @@ export const AutorizacionCuentas = () => {
             </div>
           </div>
 
-          <div className="flex flex-col mt-6">
-            <div className="-mx-4 -my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
-              <div className="inline-block min-w-full py-2 align-middle md:px-6 lg:px-8">
+          <div className="flex flex-col mt-6 h-[730px]">
+            <div className="-mx-4 -my-2 overflow-x-auto sm:-mx-6 lg:-mx-8 h-full">
+              <div className="flex flex-col justify-between min-w-full py-2 align-middle md:px-6 lg:px-8 h-full">
                 <div className="overflow-hidden border border-gray-200 dark:border-gray-700 md:rounded-lg">
                   <table className="min-w-full divide-y divide-gray-200 dark:divide-gray-700">
                     <thead className="bg-DarkSlate dark:bg-gray-800">
@@ -164,7 +172,7 @@ export const AutorizacionCuentas = () => {
                       </tr>
                     </thead>
                     <tbody className="bg-white divide-y divide-gray-200 dark:divide-gray-700 dark:bg-gray-900">
-                      {dataUser?.map((data) => (
+                      {dataUser?.slice(firstIndex, lastIndex).map((data) => (
                         <React.Fragment key={data.id_detalle}>
                           <tr>
                             <td className="px-8 py-4 text-sm font-medium text-gray-700 whitespace-nowrap">
@@ -268,6 +276,15 @@ export const AutorizacionCuentas = () => {
                       ))}
                     </tbody>
                   </table>
+                </div>
+
+                <div className="mt-4">
+                  <Pagination
+                    movementsPage={movementsPage}
+                    currentPage={currentPage}
+                    setCurrentPage={setCurrentPage}
+                    movementsTotal={movementsTotal}
+                  />
                 </div>
               </div>
 

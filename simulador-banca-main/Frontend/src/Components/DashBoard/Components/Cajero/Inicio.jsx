@@ -12,6 +12,7 @@ import { saldoFormatter } from "../../../../utils/saldoFormatter";
 export const Inicio = () => {
   //General Status
   const [idEmpleadoDetails, setIdEmpleadoDetails] = useState("");
+  const [saldoEmpleado, setSaldoEmpleado] = useState("");
   const [empleadoDetails, setEmpleadoDetails] = useState("");
 
   //Disable Modales
@@ -33,6 +34,8 @@ export const Inicio = () => {
       );
       if (response.ok) {
         const userData = await response.json();
+        const saldo = parseFloat(userData.saldo);
+        setSaldoEmpleado(saldo);
         setIdEmpleadoDetails(userData);
       } else {
         console.error("Error fetching user info:", response.status);
@@ -264,7 +267,7 @@ export const Inicio = () => {
                     </div>
                     <div className="flex jutify-center items-center gap-x-2">
                       <p className="font-semibold text-3xl text-white dark:text-gray-300">
-                        {saldoFormatter(idEmpleadoDetails.saldo)}
+                        {saldoFormatter(saldoEmpleado)}
                       </p>
                     </div>
                   </div>
